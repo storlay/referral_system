@@ -1,6 +1,6 @@
 from django.urls import path
 
-from users.views import UserAuthAPIView, UserConfirmPhoneAPIView, UserDetailAPIView
+from users.views import UserAuthAPIView, UserConfirmPhoneAPIView, UserDetailAPIView, UserWriteCodeAPIView
 
 urlpatterns = [
     path(
@@ -17,5 +17,10 @@ urlpatterns = [
         '<int:pk>/',
         UserDetailAPIView.as_view(),
         name='user-detail'
+    ),
+    path(
+        'add-inviter/<int:pk>/',
+        UserWriteCodeAPIView.as_view(),
+        name='user-add-code'
     )
 ]
