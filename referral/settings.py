@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = 1
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -21,6 +21,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Apps
+    'users',
+
+    # Third party libraries
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +71,7 @@ DATABASES = {
     }
 }
 
-# Password validation
+# Authentication
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -80,6 +86,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'users.user'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
