@@ -16,11 +16,11 @@ urlpatterns = [
     path(
         '<int:pk>/',
         UserDetailAPIView.as_view(),
-        name='user-detail'
+        name='detail'
     ),
     path(
         'add-inviter/<int:pk>/',
         UserWriteCodeAPIView.as_view(),
-        name='user-add-code'
+        name='add-code'
     )
 ]
