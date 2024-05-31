@@ -23,9 +23,16 @@ class User(AbstractBaseUser):
         default=generate_invite_code,
         unique=True
     )
+    inviter = models.CharField(
+        verbose_name='Inviter',
+        max_length=LENGTH_INVITE_CODE,
+        blank=True,
+        null=True
+    )
     invited = models.JSONField(
         verbose_name='Invited',
-        default=list
+        default=list,
+        blank=True
     )
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
