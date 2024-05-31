@@ -2,10 +2,11 @@ import time
 
 from django.contrib.auth import get_user_model, authenticate, login
 from rest_framework import status
+from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from users.serializers import AuthUserSerializer
+from users.serializers import UserAuthSerializer, UserDetailSerializer
 from users.utils import generate_auth_code
 
 User = get_user_model()
@@ -21,7 +22,7 @@ class UserAuthAPIView(APIView):
         except User.DoesNotExist:
             user = User.objects.create(phone=phone_number)
 
-        user_data = AuthUserSerializer(user).data
+        user_data = UserAuthSerializer(user).data
         auth_code = generate_auth_code()
 
         time.sleep(2)
@@ -51,7 +52,7 @@ class UserConfirmPhoneAPIView(APIView):
                 user.save()
                 login(request, user)
 
-                user_data = AuthUserSerializer(user).data
+                user_data = UserAuthSerializer(user).data
                 return Response(
                     {
                         'message': 'Authentication successful',
@@ -66,3 +67,8 @@ class UserConfirmPhoneAPIView(APIView):
             {'message': 'Invalid code'},
             status=status.HTTP_401_UNAUTHORIZED
         )
+
+
+class UserDetailAPIView(RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserDetailSerializer
