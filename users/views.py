@@ -11,7 +11,8 @@ from users.utils import generate_auth_code
 User = get_user_model()
 
 
-class AuthenticationView(APIView):
+class UserAuthAPIView(APIView):
+
     def post(self, request):
         phone_number = request.data.get('phone_number')
 
@@ -36,7 +37,7 @@ class AuthenticationView(APIView):
         )
 
 
-class ConfirmPhoneView(APIView):
+class UserConfirmPhoneAPIView(APIView):
 
     def post(self, request):
         entered_code = request.data.get('code')
