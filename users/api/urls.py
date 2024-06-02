@@ -1,6 +1,6 @@
 from django.urls import path
 
-from users.views import UserAuthAPIView, UserConfirmPhoneAPIView, UserDetailAPIView, UserWriteCodeAPIView
+from users.api.views import UserAuthAPIView, UserConfirmPhoneAPIView, UserDetailAPIView, UserWriteCodeAPIView
 
 urlpatterns = [
     path(

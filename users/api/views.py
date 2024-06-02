@@ -6,9 +6,9 @@ from rest_framework.generics import RetrieveAPIView, GenericAPIView, UpdateAPIVi
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from users.serializers import UserAuthSerializer, UserDetailSerializer, UserWriteCodeSerializer, \
+from users.api.serializers import UserAuthSerializer, UserDetailSerializer, UserWriteCodeSerializer, \
     UserAuthConfirmSerializer
-from users.utils import generate_auth_code
+from users.api.utils import generate_auth_code
 
 User = get_user_model()
 
