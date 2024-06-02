@@ -8,5 +8,5 @@ def generate_invite_code() -> str:
     return code
 
 
-def generate_auth_code() -> int:
-    return 1234
+def generate_auth_code() -> str:
+    return "1234"

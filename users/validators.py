@@ -4,3 +4,8 @@ phone_validator = RegexValidator(
     r'^\+?1?\d{9,15}$',
     'Phone number must be entered in the format: "+999999999". Up to 15 digits allowed.'
 )
+
+confirm_code_validator = RegexValidator(
+    r'^\d{4}$',
+    'Invalid code format'
+)

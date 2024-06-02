@@ -4,7 +4,6 @@ from django.db import models
 from referral.constants import LENGTH_PHONE_NUMBER, LENGTH_INVITE_CODE
 from users.managers import CustomUserManager
 from users.utils import generate_invite_code
-from users.validators import phone_validator
 
 
 class User(AbstractBaseUser):
@@ -14,7 +13,6 @@ class User(AbstractBaseUser):
     phone = models.CharField(
         verbose_name='Phone number',
         max_length=LENGTH_PHONE_NUMBER,
-        validators=(phone_validator,),
         unique=True
     )
     invite_code = models.CharField(
