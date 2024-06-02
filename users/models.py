@@ -9,6 +9,7 @@ from users.utils import generate_invite_code
 class User(AbstractBaseUser):
     USERNAME_FIELD = 'phone'
     REQUIRED_FIELDS = ()
+    password = None
 
     phone = models.CharField(
         verbose_name='Phone number',
