@@ -33,8 +33,21 @@ class UserWriteCodeSerializer(serializers.ModelSerializer):
                 'The referral code can be entered only 1 time'
             )
 
+        if instance.invite_code == inviter_code:
+            raise serializers.ValidationError(
+                'You cannot enter your referral code'
+            )
+
         try:
             inviter = User.objects.get(invite_code=inviter_code)
+            if not inviter.is_active:
+                raise serializers.ValidationError(
+                    'You cannot enter the referral code of an unconfirmed user'
+                )
+            if inviter.inviter == instance.invite_code:
+                raise serializers.ValidationError(
+                    'You cannot enter the code of the user who entered your code'
+                )
             instance.inviter = inviter_code
             inviter.invited.append(instance.phone)
             inviter.save()

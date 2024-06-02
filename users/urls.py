@@ -19,8 +19,8 @@ urlpatterns = [
         name='detail'
     ),
     path(
-        'add-inviter/<int:pk>/',
+        'add-inviter/',
         UserWriteCodeAPIView.as_view(),
-        name='add-code'
+        name='add-inviter'
     )
 ]

@@ -3,6 +3,7 @@ import time
 from django.contrib.auth import get_user_model, authenticate, login
 from rest_framework import status
 from rest_framework.generics import RetrieveAPIView, GenericAPIView, UpdateAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from users.serializers import UserAuthSerializer, UserDetailSerializer, UserWriteCodeSerializer, \
@@ -87,6 +88,7 @@ class UserDetailAPIView(RetrieveAPIView):
 
 
 class UserWriteCodeAPIView(UpdateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = UserWriteCodeSerializer
     partial = True
@@ -110,3 +112,6 @@ class UserWriteCodeAPIView(UpdateAPIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+
+    def get_object(self):
+        return self.request.user
