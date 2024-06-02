@@ -1,10 +1,11 @@
 import time
 
-from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth import get_user_model, authenticate, login, logout
 from rest_framework import status
 from rest_framework.generics import RetrieveAPIView, GenericAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from users.api.serializers import UserAuthSerializer, UserDetailSerializer, UserWriteCodeSerializer, \
     UserAuthConfirmSerializer
@@ -79,6 +80,17 @@ class UserConfirmPhoneAPIView(GenericAPIView):
         return Response(
             serializer.errors,
             status=status.HTTP_401_UNAUTHORIZED
+        )
+
+
+class UserLogoutAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        logout(request)
+        return Response(
+            {"message": "You logged out successfully"},
+            status=status.HTTP_200_OK
         )
 
 
