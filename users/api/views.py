@@ -1,14 +1,27 @@
 import time
 
-from django.contrib.auth import get_user_model, authenticate, login, logout
+from django.contrib.auth import (
+    authenticate,
+    get_user_model,
+    login,
+    logout,
+)
 from rest_framework import status
-from rest_framework.generics import RetrieveAPIView, GenericAPIView, UpdateAPIView
+from rest_framework.generics import (
+    GenericAPIView,
+    RetrieveAPIView,
+    UpdateAPIView
+)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from users.api.serializers import UserAuthSerializer, UserDetailSerializer, UserWriteCodeSerializer, \
-    UserAuthConfirmSerializer
+from users.api.serializers import (
+    UserAuthConfirmSerializer,
+    UserAuthSerializer,
+    UserDetailSerializer,
+    UserWriteCodeSerializer,
+)
 from users.api.utils import generate_auth_code
 
 User = get_user_model()

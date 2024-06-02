@@ -1,7 +1,10 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from users.api.validators import confirm_code_validator, phone_validator
+from users.api.validators import (
+    confirm_code_validator,
+    phone_validator,
+)
 
 User = get_user_model()
 

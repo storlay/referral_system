@@ -1,7 +1,12 @@
 from django.urls import path
 
-from users.api.views import UserAuthAPIView, UserConfirmPhoneAPIView, UserDetailAPIView, UserWriteCodeAPIView, \
-    UserLogoutAPIView
+from users.api.views import (
+    UserAuthAPIView,
+    UserConfirmPhoneAPIView,
+    UserDetailAPIView,
+    UserLogoutAPIView,
+    UserWriteCodeAPIView,
+)
 
 urlpatterns = [
     path(

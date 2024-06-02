@@ -1,7 +1,10 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 
-from referral.constants import LENGTH_PHONE_NUMBER, LENGTH_INVITE_CODE
+from referral.constants import (
+    LENGTH_INVITE_CODE,
+    LENGTH_PHONE_NUMBER
+)
 from users.managers import CustomUserManager
 from users.utils import generate_invite_code
 
