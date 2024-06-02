@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'users',
 
     # Third party libraries
+    'drf_spectacular',
     'rest_framework',
 ]
 
@@ -93,6 +94,19 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 AUTH_USER_MODEL = 'users.user'
+
+# Rest framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# Redoc settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Referral API',
+    'DESCRIPTION': 'Referral system',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
